@@ -14,6 +14,11 @@ export interface Team {
   shortName: string;
   owner: string;
   captain: string;
+  stats: {
+    attack: number;
+    defense: number;
+    teamwork: number;
+  };
   players: string[];
   logoColor: string;
   playerDetails: PlayerDetail[];
@@ -26,6 +31,11 @@ export const teams: Team[] = [
     shortName: "T4M",
     owner: "Varad",
     captain: "Shree",
+    stats:{
+      attack: 8,
+      defense: 8,
+      teamwork: 8
+    },
     players: [
       "Shree",
       "Hemant Chaudhari",
@@ -72,7 +82,11 @@ export const teams: Team[] = [
       "Soham D",
       "Sidhesh",
       "Parth"
-    ],
+    ],    stats:{
+      attack: 8,
+      defense: 8,
+      teamwork: 8
+    },
     logoColor: "bg-yellow-500",
     playerDetails: [
       { name: "Hemant", playStyle: "All Rounder", price: "1CR", isCaptain: true },
@@ -90,7 +104,7 @@ export const teams: Team[] = [
   },
   {
     id: 3,
-    name: "Score Me Dddy",
+    name: "Score Me Daddy",
     shortName: "SMD",
     owner: "Ninad",
     captain: "Rugved",
@@ -103,7 +117,12 @@ export const teams: Team[] = [
       "Nischay",
       "Atif",
       "Aditya"
-    ],
+    ], 
+    stats:{
+      attack: 8,
+      defense: 8,
+      teamwork: 8
+    },
     logoColor: "bg-red-600",
     playerDetails: [
       { name: "Rugved", playStyle: "All Rounder", price: "1CR", isCaptain: true },

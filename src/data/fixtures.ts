@@ -6,6 +6,7 @@ export interface Fixture {
   homeTeam: number;
   awayTeam: number;
   venue: string;
+  date: string; // Optional date field for future use
 }
 
 // Creating a round-robin tournament where each team plays every other team once
@@ -13,14 +14,7 @@ export const fixtures: Fixture[] = [];
 
 // Generate all possible team combinations (one-legged matches)
 const venues = [
-  "Tech Park Stadium",
-  "Digital Gardens",
-  "Silicon Valley Arena",
-  "Code Colosseum",
-  "Innovation Field",
-  "Developer's Ground",
-  "Programmer's Park",
-  "Cyber Stadium"
+  "Top Court"
 ];
 
 let fixtureId = 1;
@@ -32,7 +26,8 @@ for (let i = 0; i < teams.length; i++) {
       id: fixtureId++,
       homeTeam: teams[i].id,
       awayTeam: teams[j].id,
-      venue: venues[Math.floor(Math.random() * venues.length)]
+      venue: venues[Math.floor(Math.random() * venues.length)],
+      date: "2025-04-04T10:00:00Z" // Placeholder date, can be updated later
     });
   }
 }
