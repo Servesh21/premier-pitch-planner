@@ -75,8 +75,9 @@ const Index = () => {
                 <Users className="h-7 w-7 text-primary" />
                 <span>Tournament Teams</span>
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className="text-gray-600 max-w-2xl mx-auto mb-8">
                 Eight tech giants competing for glory in the inaugural season of the IT Premier League.
+                Click on "View Team Details" to see the complete roster.
               </p>
             </div>
             

@@ -1,3 +1,8 @@
+export interface PlayerDetail {
+  name: string;
+  playStyle: string;
+  price: string;
+}
 
 export interface Team {
   id: number;
@@ -7,6 +12,7 @@ export interface Team {
   captain: string;
   players: string[];
   logoColor: string;
+  playerDetails?: PlayerDetail[];
 }
 
 export const teams: Team[] = [
@@ -29,7 +35,13 @@ export const teams: Team[] = [
       "Trent Terminal",
       "Adam Linux"
     ],
-    logoColor: "bg-blue-600"
+    logoColor: "bg-blue-600",
+    playerDetails: [
+      { name: "Rohit Codecharya", playStyle: "Opening Batsman", price: "$2.2M" },
+      { name: "Quinton de IDE", playStyle: "Wicket-keeper Batsman", price: "$1.8M" },
+      { name: "Hardik Program", playStyle: "All-rounder", price: "$1.9M" },
+      { name: "Jasprit Debugger", playStyle: "Fast Bowler", price: "$2.0M" }
+    ]
   },
   {
     id: 2,
@@ -50,7 +62,11 @@ export const teams: Team[] = [
       "Sam FullStack",
       "Maheesh DevSecOps"
     ],
-    logoColor: "bg-yellow-500"
+    logoColor: "bg-yellow-500",
+    playerDetails: [
+      { name: "MS Compiler", playStyle: "Wicket-keeper Batsman", price: "$2.4M" },
+      { name: "Ravindra JScript", playStyle: "All-rounder", price: "$2.1M" }
+    ]
   },
   {
     id: 3,

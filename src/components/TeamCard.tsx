@@ -9,13 +9,17 @@ import {
   CardHeader, 
   CardTitle 
 } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Team } from "@/data/teams";
+import TeamDetailsSheet from "./TeamDetailsSheet";
 
 interface TeamCardProps {
   team: Team;
 }
 
 const TeamCard: React.FC<TeamCardProps> = ({ team }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
   return (
     <Card className="h-full overflow-hidden transition-all hover:shadow-lg">
       <div className={`${team.logoColor} h-2 w-full`}></div>
@@ -48,8 +52,20 @@ const TeamCard: React.FC<TeamCardProps> = ({ team }) => {
         </div>
       </CardContent>
       <CardFooter className="pt-2">
-        <button className="text-sm text-primary hover:underline">View Team Details</button>
+        <Button 
+          variant="ghost" 
+          className="text-sm text-primary w-full justify-start p-0 h-auto hover:bg-transparent hover:underline"
+          onClick={() => setIsOpen(true)}
+        >
+          View Team Details
+        </Button>
       </CardFooter>
+      
+      <TeamDetailsSheet 
+        team={team} 
+        isOpen={isOpen} 
+        onClose={() => setIsOpen(false)} 
+      />
     </Card>
   );
 };
