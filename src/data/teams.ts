@@ -1,7 +1,11 @@
+
 export interface PlayerDetail {
   name: string;
   playStyle: string;
   price: string;
+  photo?: string;
+  isCaptain?: boolean;
+  isOwner?: boolean;
 }
 
 export interface Team {
@@ -12,186 +16,105 @@ export interface Team {
   captain: string;
   players: string[];
   logoColor: string;
-  playerDetails?: PlayerDetail[];
+  playerDetails: PlayerDetail[];
 }
 
 export const teams: Team[] = [
   {
     id: 1,
-    name: "Mumbai Technicians",
-    shortName: "MT",
-    owner: "Reliance Digital",
-    captain: "Rohit Codecharya",
+    name: "T4 Mitramandal",
+    shortName: "T4M",
+    owner: "Varad",
+    captain: "Shree",
     players: [
-      "Rohit Codecharya",
-      "Quinton de IDE",
-      "Suryakumar JavaDev",
-      "Ishan GitShan",
-      "Kieron PowerPoint",
-      "Hardik Program",
-      "Krunal Program",
-      "Rahul DevOps",
-      "Jasprit Debugger",
-      "Trent Terminal",
-      "Adam Linux"
+      "Shree",
+      "Hemant Chaudhari",
+      "Atharva Avhad",
+      "Hassan Qureshi",
+      "Jaden Fernandes",
+      "Ram Bobade",
+      "Atharva Bawge",
+      "Harshal Bhosale",
+      "Keshav Prajapati",
+      "Rakesh Chaudhary",
+      "Servesh Khade"
     ],
     logoColor: "bg-blue-600",
     playerDetails: [
-      { name: "Rohit Codecharya", playStyle: "Opening Batsman", price: "$2.2M" },
-      { name: "Quinton de IDE", playStyle: "Wicket-keeper Batsman", price: "$1.8M" },
-      { name: "Hardik Program", playStyle: "All-rounder", price: "$1.9M" },
-      { name: "Jasprit Debugger", playStyle: "Fast Bowler", price: "$2.0M" }
+      { name: "Shree", playStyle: "All Rounder", price: "1CR", isCaptain: true },
+      { name: "Hemant Chaudhari", playStyle: "Bowler", price: "2 Lakh", photo: "https://drive.google.com/open?id=167faJVkDgIJy982BBuaw27EDJFKgTZYN" },
+      { name: "Atharva Avhad", playStyle: "All Rounder", price: "3 Lakh", photo: "https://drive.google.com/open?id=1mPPxvfGrDRbYGFWq5yhxENgbBnBWIYWe" },
+      { name: "Hassan Qureshi", playStyle: "All Rounder", price: "2 Lakh", photo: "https://media-bom2-1.cdn.whatsapp.net/v/t61.24694-24/459942472_1288467142377309_6692740574337292177_n.jpg?ccb=11-4&oh=01_Q5AaIcHYqVhgjZY0HJSRXX9Ebb2VCtRuQZ8KcYlZApSC1iri&oe=67F4E769&_nc_sid=5e03e0&_nc_cat=102" },
+      { name: "Jaden Fernandes", playStyle: "All Rounder", price: "51 Lakh", photo: "https://drive.google.com/open?id=1t-iBImdXcJ81Ci2DRmqBdIL4g1nDEgI1" },
+      { name: "Ram Bobade", playStyle: "All Rounder", price: "12 Lakh" },
+      { name: "Atharva Bawge", playStyle: "All Rounder", price: "6 Lakh" },
+      { name: "Harshal Bhosale", playStyle: "All Rounder", price: "7 Lakh", photo: "https://drive.google.com/open?id=1ER8LqLVXT_PKxDCaWD1IkXOPjUdjQ21L" },
+      { name: "Keshav Prajapati", playStyle: "All Rounder", price: "2.5 Lakh" },
+      { name: "Rakesh Chaudhary", playStyle: "All Rounder", price: "2 Lakh", photo: "https://drive.google.com/open?id=1JJVjzy8n0gSMdFloiIjzLYTlapDa1Aao" },
+      { name: "Servesh Khade", playStyle: "All Rounder", price: "5.5 Lakh", photo: "https://drive.google.com/open?id=18pac4n065z3RhSw4sw0qb0TC_CwsFrcU" },
+      { name: "Varad", playStyle: "Owner", price: "", isOwner: true }
     ]
   },
   {
     id: 2,
-    name: "Chennai Super Programmers",
-    shortName: "CSP",
-    owner: "India Digital Ltd",
-    captain: "MS Compiler",
+    name: "IT Strikers",
+    shortName: "ITS",
+    owner: "Sebastian",
+    captain: "Hemant",
     players: [
-      "MS Compiler",
-      "Ruturaj GitKwad",
-      "Devon CodeWay",
-      "Moeen Algorithms",
-      "Ambati Raycast",
-      "Ravindra JScript",
-      "Dwayne Binary",
-      "Deepak BuildTools",
-      "Shardul StackThakur",
-      "Sam FullStack",
-      "Maheesh DevSecOps"
+      "Hemant",
+      "Soham R",
+      "Om",
+      "Umair",
+      "Omkar",
+      "Pranit",
+      "Jivesh",
+      "Soham D",
+      "Sidhesh",
+      "Parth"
     ],
     logoColor: "bg-yellow-500",
     playerDetails: [
-      { name: "MS Compiler", playStyle: "Wicket-keeper Batsman", price: "$2.4M" },
-      { name: "Ravindra JScript", playStyle: "All-rounder", price: "$2.1M" }
+      { name: "Hemant", playStyle: "All Rounder", price: "1CR", isCaptain: true },
+      { name: "Soham R", playStyle: "Batsman", price: "5 Lakh", photo: "https://drive.google.com/open?id=17zq50AebxY5ysdGnF6ujjc1rkTeZhwg7" },
+      { name: "Om", playStyle: "Bowler", price: "2 Lakh", photo: "https://drive.google.com/open?id=1mYQoWdi8piFw3TYDbw63A0wrUb07D1h1" },
+      { name: "Umair", playStyle: "All Rounder", price: "8.5 Lakh" },
+      { name: "Omkar", playStyle: "Batsman", price: "19 Lakh", photo: "https://drive.google.com/open?id=1Gze8H2CcrnZkdhZU2SEyQ4o19qU1LGjH" },
+      { name: "Pranit", playStyle: "Batsman", price: "2 Lakh", photo: "https://drive.google.com/open?id=1FBh589AY7aO3OyKdhqYOD2hTz07Jc9Uq" },
+      { name: "Jivesh", playStyle: "All Rounder", price: "5 Lakh", photo: "https://drive.google.com/open?id=1veXmWjxLf5eOf2265LRgyCES9ZOdrqoo" },
+      { name: "Soham D", playStyle: "Batsman", price: "2 Lakh", photo: "https://drive.google.com/open?id=1aCUFuTnXGUlzIKcU_JbfB5trpEznwRr0" },
+      { name: "Sidhesh", playStyle: "Bowler", price: "6.5 Lakh" },
+      { name: "Parth", playStyle: "All Rounder", price: "7.5 Lakh", photo: "https://drive.google.com/open?id=1hkODUkeBGxEK_QB0yQGgHR3RllMueJ8l" },
+      { name: "Sebastian", playStyle: "Owner", price: "", isOwner: true }
     ]
   },
   {
     id: 3,
-    name: "Bangalore Code Challengers",
-    shortName: "BCC",
-    owner: "United Spirits Digital",
-    captain: "Virat Codely",
+    name: "Score Me Dddy",
+    shortName: "SMD",
+    owner: "Ninad",
+    captain: "Rugved",
     players: [
-      "Virat Codely",
-      "Faf du JavaScript",
-      "Rajat ProgramPath",
-      "Glenn FullStackwell",
-      "Dinesh DevOps",
-      "Wanindu DevOps",
-      "Shahbaz Frontend",
-      "Harshal BackEndDev",
-      "Mohammed CIDev",
-      "Josh SecurityDev",
-      "Suyash Python"
+      "Rugved",
+      "Pritam",
+      "Yashraj",
+      "Vinay",
+      "Vedant",
+      "Nischay",
+      "Atif",
+      "Aditya"
     ],
-    logoColor: "bg-red-600"
-  },
-  {
-    id: 4,
-    name: "Kolkata Keyboard Knights",
-    shortName: "KKK",
-    owner: "Red Chillies Tech",
-    captain: "Shreyas CodeReview",
-    players: [
-      "Shreyas CodeReview",
-      "Rahmanullah GitGurbaz",
-      "Venkatesh Python",
-      "Nitish ReactDev",
-      "Rinku FullStack",
-      "Andre Software",
-      "Sunil WebDesign",
-      "Mitchell DevSecOps",
-      "Tim AngularDev",
-      "Varun DevOpsChakaravarthy",
-      "Umesh BackendDev"
-    ],
-    logoColor: "bg-purple-700"
-  },
-  {
-    id: 5,
-    name: "Delhi Software Capitals",
-    shortName: "DSC",
-    owner: "GMR Tech Group",
-    captain: "Rishabh DevOps",
-    players: [
-      "Rishabh DevOps",
-      "David JavaScript",
-      "Prithvi FullStackShaw",
-      "Mitchell AngularDev",
-      "Axar ReactNative",
-      "Lalit VueJSDev",
-      "Rovman PowerBI",
-      "Kuldeep CodeReviewer",
-      "Mustafizur BackEndRahman",
-      "Khaleel BackendDev",
-      "Ishant JavaDev"
-    ],
-    logoColor: "bg-blue-500"
-  },
-  {
-    id: 6,
-    name: "Rajasthan Royal Developers",
-    shortName: "RRD",
-    owner: "Manoj Badale Tech",
-    captain: "Sanju DevOps",
-    players: [
-      "Sanju DevOps",
-      "Jos NodeJSler",
-      "Yashasvi JiraWal",
-      "Devdutt CodePadikkal",
-      "Shimron WebDevelopment",
-      "Riyan Front-End",
-      "Ravichandran BackEnd",
-      "Trent Devops",
-      "Prasidh DevSecOps",
-      "Yuzvendra JavaDev",
-      "Navdeep MERNStackDev"
-    ],
-    logoColor: "bg-pink-600"
-  },
-  {
-    id: 7,
-    name: "Punjab Tech Kings",
-    shortName: "PTK",
-    owner: "Preity Digital Ventures",
-    captain: "Mayank CodeKiller",
-    players: [
-      "Mayank CodeKiller",
-      "Shikhar WebDhawan",
-      "Jonny FullStack",
-      "Liam BlockChain",
-      "Jitesh Back-End",
-      "Shahrukh DevOpsKhan",
-      "Odean DataScience",
-      "Rahul Programming",
-      "Kagiso Angular",
-      "Arshdeep ReactDev",
-      "Harpreet MERNDev"
-    ],
-    logoColor: "bg-red-500"
-  },
-  {
-    id: 8,
-    name: "Hyderabad SoftwareChargers",
-    shortName: "HSC",
-    owner: "Sun TV Network Digital",
-    captain: "Kane SoftwareWilliamson",
-    players: [
-      "Kane SoftwareWilliamson",
-      "Abhishek CodeReviewSharma",
-      "Rahul ReactDevTripathi",
-      "Nicholas NodeJSDev",
-      "Aiden Full-Stack",
-      "Abdul BackEndDev",
-      "Washington DevSecOps",
-      "Marco Software",
-      "T MVC",
-      "Bhuvneshwar DevOps",
-      "Umran Full-Stack"
-    ],
-    logoColor: "bg-orange-500"
+    logoColor: "bg-red-600",
+    playerDetails: [
+      { name: "Rugved", playStyle: "All Rounder", price: "1CR", isCaptain: true },
+      { name: "Pritam", playStyle: "All Rounder", price: "17 Lakh" },
+      { name: "Yashraj", playStyle: "All Rounder", price: "5 Lakh", photo: "https://drive.google.com/open?id=1znKSpruxA3HREDxf-X47Jg7tqdKu7ryK" },
+      { name: "Vinay", playStyle: "All Rounder", price: "2 Lakh", photo: "https://drive.google.com/open?id=1heyNTtqFgjY5YrAplDkfJyxtT1a0urBQ" },
+      { name: "Vedant", playStyle: "All Rounder", price: "51 Lakh", photo: "https://drive.google.com/open?id=1Mh4dcCOeHx0uA5We3EoiFVgtRQwZmqHs" },
+      { name: "Nischay", playStyle: "All Rounder", price: "8 Lakh", photo: "https://drive.google.com/open?id=1vEM5VV5ReB0gykzZgSaXcn-HHwJAZCot" },
+      { name: "Atif", playStyle: "Batsman", price: "12 Lakh" },
+      { name: "Aditya", playStyle: "Bowler", price: "5 Lakh", photo: "https://drive.google.com/open?id=1JWRxP63MeKKT5Q2jbEPrywPmGq9zdRru" },
+      { name: "Ninad", playStyle: "Owner", price: "", isOwner: true }
+    ]
   }
 ];

@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Users } from "lucide-react";
+import { Users, User, Trophy } from "lucide-react";
 import { 
   Card, 
   CardContent, 
@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Team } from "@/data/teams";
 import TeamDetailsSheet from "./TeamDetailsSheet";
+import { Badge } from "@/components/ui/badge";
 
 interface TeamCardProps {
   team: Team;
@@ -19,6 +20,8 @@ interface TeamCardProps {
 
 const TeamCard: React.FC<TeamCardProps> = ({ team }) => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const captain = team.playerDetails.find(player => player.isCaptain);
+  const nonCaptainPlayers = team.playerDetails.filter(player => !player.isCaptain && !player.isOwner);
 
   return (
     <Card className="h-full overflow-hidden transition-all hover:shadow-lg">
@@ -27,7 +30,9 @@ const TeamCard: React.FC<TeamCardProps> = ({ team }) => {
         <div className="flex justify-between items-start">
           <div>
             <CardTitle className="text-xl">{team.name}</CardTitle>
-            <CardDescription>Owner: {team.owner}</CardDescription>
+            <CardDescription className="flex items-center gap-1">
+              <User className="h-3.5 w-3.5" /> Owner: {team.owner}
+            </CardDescription>
           </div>
           <div className={`${team.logoColor} text-white font-bold rounded-full w-10 h-10 flex items-center justify-center`}>
             {team.shortName}
@@ -36,25 +41,35 @@ const TeamCard: React.FC<TeamCardProps> = ({ team }) => {
       </CardHeader>
       <CardContent className="pb-2">
         <div className="space-y-2">
-          <div>
-            <h4 className="text-sm font-semibold">Captain</h4>
-            <p>{team.captain}</p>
-          </div>
+          {captain && (
+            <div>
+              <h4 className="text-sm font-semibold flex items-center gap-1">
+                <Trophy className="h-4 w-4 text-yellow-500" /> Captain
+              </h4>
+              <div className="flex items-center gap-2">
+                <p>{captain.name}</p>
+                <Badge variant="outline" className="text-xs bg-yellow-50">{captain.playStyle}</Badge>
+              </div>
+            </div>
+          )}
           <div>
             <h4 className="text-sm font-semibold flex items-center gap-1">
               <Users className="h-4 w-4" /> 
-              Key Players
+              Top Players
             </h4>
             <p className="text-sm text-muted-foreground">
-              {team.players.slice(0, 3).join(", ")}...
+              {nonCaptainPlayers.slice(0, 3).map(p => p.name).join(", ")}...
             </p>
+          </div>
+          <div className="text-sm">
+            <span className="font-semibold">Squad Size:</span> {nonCaptainPlayers.length + 1} players
           </div>
         </div>
       </CardContent>
       <CardFooter className="pt-2">
         <Button 
-          variant="ghost" 
-          className="text-sm text-primary w-full justify-start p-0 h-auto hover:bg-transparent hover:underline"
+          variant="default" 
+          className="w-full justify-center"
           onClick={() => setIsOpen(true)}
         >
           View Team Details

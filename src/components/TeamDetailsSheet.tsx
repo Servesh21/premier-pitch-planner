@@ -9,7 +9,9 @@ import {
   SheetClose
 } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Team } from "@/data/teams";
+import { Users, User, Trophy } from "lucide-react";
+import { Team, PlayerDetail } from "@/data/teams";
+import { Badge } from "@/components/ui/badge";
 
 interface TeamDetailsSheetProps {
   team: Team;
@@ -18,6 +20,18 @@ interface TeamDetailsSheetProps {
 }
 
 const TeamDetailsSheet: React.FC<TeamDetailsSheetProps> = ({ team, isOpen, onClose }) => {
+  // Find the owner
+  const owner = team.playerDetails.find(player => player.isOwner);
+  
+  // Get all players (excluding owner)
+  const allPlayers = team.playerDetails.filter(player => !player.isOwner);
+  
+  // Find captain
+  const captain = allPlayers.find(player => player.isCaptain);
+  
+  // Get regular players (excluding captain)
+  const regularPlayers = allPlayers.filter(player => !player.isCaptain);
+
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="overflow-y-auto w-full sm:max-w-md">
@@ -29,40 +43,36 @@ const TeamDetailsSheet: React.FC<TeamDetailsSheetProps> = ({ team, isOpen, onClo
           </div>
           <div className="pt-28">
             <SheetTitle className="text-2xl">{team.name}</SheetTitle>
-            <SheetDescription>
-              Owner: {team.owner}
+            <SheetDescription className="flex items-center gap-2">
+              <User className="h-4 w-4" /> Owner: {team.owner}
             </SheetDescription>
           </div>
         </SheetHeader>
         
         <div className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Team Captain</h3>
-            <PlayerCard 
-              name={team.captain} 
-              playStyle={team.playerDetails?.find(p => p.name === team.captain)?.playStyle || "All-rounder"} 
-              price={team.playerDetails?.find(p => p.name === team.captain)?.price || "$1.2M"} 
-              image={`/players/${team.shortName.toLowerCase()}/${team.captain.split(' ')[0].toLowerCase()}.jpg`} 
-              isCaptain
-            />
-          </div>
+          {captain && (
+            <div>
+              <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
+                <Trophy className="h-5 w-5 text-yellow-500" /> Team Captain
+              </h3>
+              <PlayerCard 
+                player={captain}
+                isCaptain={true}
+              />
+            </div>
+          )}
           
           <div>
-            <h3 className="text-lg font-semibold mb-2">Team Players</h3>
+            <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
+              <Users className="h-5 w-5 text-primary" /> Team Players
+            </h3>
             <div className="space-y-3">
-              {team.players.filter(player => player !== team.captain).map((player, index) => {
-                const playerDetails = team.playerDetails?.find(p => p.name === player);
-                
-                return (
-                  <PlayerCard 
-                    key={index} 
-                    name={player} 
-                    playStyle={playerDetails?.playStyle || getRandomPlayStyle()} 
-                    price={playerDetails?.price || getRandomPrice()} 
-                    image={`/players/${team.shortName.toLowerCase()}/${player.split(' ')[0].toLowerCase()}.jpg`} 
-                  />
-                );
-              })}
+              {regularPlayers.map((player, index) => (
+                <PlayerCard 
+                  key={index} 
+                  player={player}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -74,47 +84,33 @@ const TeamDetailsSheet: React.FC<TeamDetailsSheetProps> = ({ team, isOpen, onClo
 };
 
 interface PlayerCardProps {
-  name: string;
-  playStyle: string;
-  price: string;
-  image: string;
+  player: PlayerDetail;
   isCaptain?: boolean;
 }
 
-const PlayerCard: React.FC<PlayerCardProps> = ({ name, playStyle, price, image, isCaptain }) => {
+const PlayerCard: React.FC<PlayerCardProps> = ({ player, isCaptain }) => {
   return (
-    <div className="flex items-center space-x-4 p-3 bg-slate-50 rounded-lg">
-      <Avatar className="h-14 w-14 border-2 border-gray-200">
-        <AvatarImage src={image} alt={name} />
+    <div className="flex items-center space-x-4 p-4 bg-slate-50 rounded-lg transition-all hover:shadow-md">
+      <Avatar className="h-16 w-16 border-2 border-gray-200">
+        <AvatarImage src={player.photo || ""} alt={player.name} />
         <AvatarFallback className={isCaptain ? "bg-yellow-100 text-yellow-800" : ""}>
-          {name.split(' ').map(n => n[0]).join('')}
+          {player.name.split(' ').map(n => n[0]).join('')}
         </AvatarFallback>
       </Avatar>
       <div className="flex-1">
-        <div className="flex items-center">
-          <h4 className="font-medium">{name}</h4>
+        <div className="flex items-center flex-wrap gap-2">
+          <h4 className="font-medium">{player.name}</h4>
           {isCaptain && (
-            <span className="ml-2 bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded-full">
+            <Badge variant="outline" className="bg-yellow-100 text-yellow-800 border-yellow-300">
               Captain
-            </span>
+            </Badge>
           )}
         </div>
-        <p className="text-sm text-gray-500 mt-1">{playStyle}</p>
+        <p className="text-sm text-gray-500 mt-1">{player.playStyle}</p>
       </div>
-      <div className="text-sm font-semibold text-primary">{price}</div>
+      <div className="text-sm font-semibold text-primary">{player.price}</div>
     </div>
   );
 };
-
-// Helper functions for random data generation
-function getRandomPlayStyle() {
-  const styles = ["Batsman", "Bowler", "All-rounder", "Wicket-keeper", "Spin Bowler", "Fast Bowler"];
-  return styles[Math.floor(Math.random() * styles.length)];
-}
-
-function getRandomPrice() {
-  const base = (0.8 + Math.random() * 1.7).toFixed(1);
-  return `$${base}M`;
-}
 
 export default TeamDetailsSheet;
