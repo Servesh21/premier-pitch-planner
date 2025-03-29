@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Menu, X, Cricket } from "lucide-react";
+import { Menu, X, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
@@ -15,7 +15,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Cricket className="h-8 w-8 text-primary" />
+            <Award className="h-8 w-8 text-primary" />
             <h1 className="text-2xl font-bold text-primary tracking-tight">
               IT Premier League
             </h1>

@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Cricket } from "lucide-react";
+import { Award } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="flex flex-col">
             <div className="flex items-center space-x-2 mb-4">
-              <Cricket className="h-6 w-6" />
+              <Award className="h-6 w-6" />
               <h2 className="text-xl font-bold">IT Premier League</h2>
             </div>
             <p className="text-primary-foreground/80">

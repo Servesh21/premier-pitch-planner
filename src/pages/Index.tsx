@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Trophy, Users, Cricket } from "lucide-react";
+import { Trophy, Users, Award } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TeamCard from "@/components/TeamCard";
@@ -18,7 +18,7 @@ const Index = () => {
         <section id="home" className="hero-gradient text-white py-16 md:py-24">
           <div className="container mx-auto px-4 text-center">
             <div className="flex justify-center mb-6">
-              <Cricket className="h-16 w-16" />
+              <Award className="h-16 w-16" />
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-4">IT Premier League</h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
